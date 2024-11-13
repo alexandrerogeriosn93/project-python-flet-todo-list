@@ -51,3 +51,11 @@ class TodoApp(ft.Column):
                 ],
             ),
         ]
+
+    def add_clicked(self, e):
+        if self.new_task.value:
+            task = Task(self.new_task.value, self.task_status_change, self.task_delete)
+            self.tasks.controls.append(task)
+            self.new_task.value = ""
+            self.new_task.focus()
+            self.update()
