@@ -59,3 +59,15 @@ class TodoApp(ft.Column):
             self.new_task.value = ""
             self.new_task.focus()
             self.update()
+
+    def task_status_change(self, task):
+        self.update()
+
+    def task_delete(self, task):
+        self.tasks.controls.remove(task)
+        self.update()
+
+    def clear_clicked(self, e):
+        for task in self.task.controls[:]:
+            if task.completed:
+                self.task_delete(task)
