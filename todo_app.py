@@ -21,7 +21,7 @@ class TodoApp(ft.Column):
         self.width = 600
         self.controls = [
             ft.Row(
-                [ft.Text(value="Todos", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM)],
+                [ft.Text(value="ToDos", theme_style=ft.TextThemeStyle.HEADLINE_MEDIUM)],
                 alignment=ft.MainAxisAlignment.CENTER,
             ),
             ft.Row(
@@ -63,12 +63,15 @@ class TodoApp(ft.Column):
     def task_status_change(self, task):
         self.update()
 
+    def tabs_changed(self, task):
+        self.update()
+
     def task_delete(self, task):
         self.tasks.controls.remove(task)
         self.update()
 
     def clear_clicked(self, e):
-        for task in self.task.controls[:]:
+        for task in self.tasks.controls[:]:
             if task.completed:
                 self.task_delete(task)
 
